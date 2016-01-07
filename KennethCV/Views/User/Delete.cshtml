@@ -1,0 +1,49 @@
+@model KennethCV.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3>Are you sure you want to delete this?</h3>
+        </div>
+        <div class="panel-body">
+            
+            <div class="display-field">User Name: @Model.NameUser @Model.SurnameUser</div>
+            <hr />             
+            
+            <div class="display-field">User Age: @Model.AgeUser</div>           
+            <hr />  
+
+             <div class="display-field">Document: @Model.DocumentUser</div>
+            <hr />
+
+            <div class="display-field">Phone: @Model.PhoneUser</div>
+            <hr /> 
+
+            <div class="display-field">Address: @Model.AddressUser</div>
+            <hr /> 
+
+            <div class="display-field">Email: @Model.EmailUser</div>
+            <hr /> 
+
+            @using (Html.BeginForm()) {
+                <p>
+                    <button type="submit" class="btn btn-primary">Delete</button> |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            }
+            
+        </div>
+    </div>       
+</fieldset>
+
+
+

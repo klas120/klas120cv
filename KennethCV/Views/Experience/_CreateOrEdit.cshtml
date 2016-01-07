@@ -1,0 +1,47 @@
+@model KennethCV.Models.Experience
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Employment)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Employment)
+    @Html.ValidationMessageFor(model => model.Employment)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.SinceUntil)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.SinceUntil)
+    @Html.ValidationMessageFor(model => model.SinceUntil)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Workplace)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Workplace)
+    @Html.ValidationMessageFor(model => model.Workplace)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.WorkDetail)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.WorkDetail)
+    @Html.ValidationMessageFor(model => model.WorkDetail)
+</div>
+
+<div class="editor-label">
+    User
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.UserId, ((IEnumerable<KennethCV.Models.User>)ViewBag.PossibleUser).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option.NameUser).ToString(), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.UserId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.UserId)
+</div>

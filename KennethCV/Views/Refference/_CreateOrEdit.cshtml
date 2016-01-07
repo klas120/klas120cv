@@ -1,0 +1,77 @@
+@model KennethCV.Models.Refference
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NameRefefence)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NameRefefence)
+    @Html.ValidationMessageFor(model => model.NameRefefence)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.SurnameReference)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.SurnameReference)
+    @Html.ValidationMessageFor(model => model.SurnameReference)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.PhoneReference)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.PhoneReference)
+    @Html.ValidationMessageFor(model => model.PhoneReference)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.employmentReference)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.employmentReference)
+    @Html.ValidationMessageFor(model => model.employmentReference)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.WorkPlaceReference)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.WorkPlaceReference)
+    @Html.ValidationMessageFor(model => model.WorkPlaceReference)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.EmailReference)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.EmailReference)
+    @Html.ValidationMessageFor(model => model.EmailReference)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ComentReference)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ComentReference)
+    @Html.ValidationMessageFor(model => model.ComentReference)
+</div>
+
+<div class="editor-label">
+    User
+</div>
+<div class="editor-field">
+
+    @Html.DropDownListFor(model => model.UserId, 
+        ((IEnumerable<KennethCV.Models.User>)ViewBag.PossibleUser).Select(option => new SelectListItem {
+            Text = Html.DisplayTextFor(_ => option.NameUser ).ToString(), 
+            Value = option.Id.ToString(),
+            Selected = (Model != null)
+        }), "Choose One Option!")
+    @Html.ValidationMessageFor(model => model.UserId)
+
+   
+</div>
+
+

@@ -1,0 +1,61 @@
+@model KennethCV.Models.User
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NameUser)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NameUser, null, new { @class = "form-control" })     
+    @Html.ValidationMessageFor(model => model.NameUser)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.SurnameUser)
+</div>
+<div class="editor-field">    
+    @Html.EditorFor(model => model.SurnameUser)
+    @Html.ValidationMessageFor(model => model.SurnameUser)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.AgeUser)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.AgeUser)
+    @Html.ValidationMessageFor(model => model.AgeUser)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.DocumentUser)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.DocumentUser)
+    @Html.ValidationMessageFor(model => model.DocumentUser)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.PhoneUser)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.PhoneUser)
+    @Html.ValidationMessageFor(model => model.PhoneUser)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.AddressUser)
+</div>
+<div class="editor-field">     
+    @Html.TextAreaFor(model => model.AddressUser, new {@cols="40" , @rows="4" })    
+    @Html.ValidationMessageFor(model => model.AddressUser)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.EmailUser)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.EmailUser)
+    @Html.ValidationMessageFor(model => model.EmailUser)
+</div>
+
+<br />

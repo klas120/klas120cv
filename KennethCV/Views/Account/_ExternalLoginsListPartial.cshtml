@@ -1,0 +1,25 @@
+﻿@model ICollection<AuthenticationClientData>
+
+@if (Model.Count == 0)
+{
+    <div class="message-info">
+        <p>Solamente el super usuario puede autenticarse.</p>
+        <p>Dejenos un mensaje en la sección: <link href="#" rel="stylesheet" /> </p>
+    </div>
+}
+else
+{
+    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+    @Html.AntiForgeryToken()
+    <fieldset id="socialLoginList">
+        <legend>Inicie sesión con otro servicio</legend>
+        <p>
+        @foreach (AuthenticationClientData p in Model)
+        {
+            <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Inicie sesión con su cuenta de @p.DisplayName">@p.DisplayName</button>
+        }
+        </p>
+    </fieldset>
+    }
+}

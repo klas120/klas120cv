@@ -1,0 +1,33 @@
+@model KennethCV.Models.Experience
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+ @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+ @Html.ActionLink("Back to List", "Index")
+<fieldset>
+    <legend>Experience</legend>
+
+    <ul class="list-group">
+       
+        <li class="list-group-item">
+            
+            Name: @Model.Employment 
+            <hr />
+            Phone: @Model.SinceUntil
+            <hr />
+            Employment: @Model.Workplace
+            <hr />
+            WorkPlace: @Model.WorkDetail
+            <hr />                      
+        </li>       
+    </ul>    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

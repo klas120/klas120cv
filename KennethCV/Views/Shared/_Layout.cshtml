@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Curriculo MVC</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+          
+        <link rel="stylesheet" href="~/Content/pills/bootstrap.css">
+        @Scripts.Render("~/Scripts/pills/bootstrap.min.js")
+        @Scripts.Render("~/Scripts/pills/jquery.min.js")
+        
+        
+             
+        @Styles.Render("~/Content/themes/base/css", "~/Content/css")
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">                                      
+                    <img style="width: 100px; height: 100%;" src="~/Images/foto.png" alt="Passport Photo" class="img-thumbnail img-responsive" />
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Principal", "Index", "Home")</li>                            
+                            <li>@Html.ActionLink("Contact Us", "SendMail", "Contact")</li>
+
+                            @if (Request.IsAuthenticated) {
+                               <li>@Html.ActionLink("User", "Index", "User")</li>
+                               <li>@Html.ActionLink("Education", "Index", "Education")</li>
+                               <li>@Html.ActionLink("Experience", "Index", "Experience")</li>
+                               <li>@Html.ActionLink("Reference", "Index", "Refference")</li> 
+                            }                           
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="jumbotron">
+                @RenderBody()
+            </section>
+        </div>
+        <footer class="jumbotron">
+            <div class="jumbotron">
+                <div class="float-center">
+                    <p>&copy; @DateTime.Now.Year - My Currículo in ASP.NET MVC</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

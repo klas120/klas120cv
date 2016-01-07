@@ -1,0 +1,38 @@
+@model KennethCV.Models.Education
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+   @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+   @Html.ActionLink("Back to List", "Index")
+
+<fieldset>
+    <legend>Education</legend>
+
+
+
+    <ul class="list-group">
+       
+        <li class="list-group-item">
+            
+            Training Center: @Model.TrainingCenter 
+            <hr />
+            Certificate Name: @Model.CertificateName
+            <hr />
+            Grade Level: @Model.GradeLevel
+            <hr />
+            Year Received: @Model.yearReceived
+            <hr />           
+           
+        </li>       
+    </ul>
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

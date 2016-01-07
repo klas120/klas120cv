@@ -1,0 +1,111 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using KennethCV.Models;
+
+namespace KennethCV.Controllers
+{
+    [Authorize]
+    public class UserController : Controller
+    {
+        private CVitaeDb _db = new CVitaeDb();
+
+        //
+        // GET: /User/
+
+        public ViewResult Index()
+        {
+            return View(_db.Users.Include(user => user.Refferences).Include(user => user.Educations).Include(user => user.Experiences).ToList());
+        }
+
+        //
+        // GET: /User/Details/5
+
+        public ViewResult Details(int id)
+        {
+            User user = _db.Users.Single(x => x.Id == id);
+            return View(user);
+        }
+
+        //
+        // GET: /User/Create
+
+        public ActionResult Create()
+        {
+            return View();
+        } 
+
+        //
+        // POST: /User/Create
+
+        [HttpPost]
+        public ActionResult Create(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Users.Add(user);
+                _db.SaveChanges();
+                return RedirectToAction("Index");  
+            }
+
+            return View(user);
+        }
+        
+        //
+        // GET: /User/Edit/5
+ 
+        public ActionResult Edit(int id)
+        {
+            User user = _db.Users.Single(x => x.Id == id);
+            return View(user);
+        }
+
+        //
+        // POST: /User/Edit/5
+
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(user).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+        //
+        // GET: /User/Delete/5
+ 
+        public ActionResult Delete(int id)
+        {
+            User user = _db.Users.Single(x => x.Id == id);
+            return View(user);
+        }
+
+        //
+        // POST: /User/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            User user = _db.Users.Single(x => x.Id == id);
+            _db.Users.Remove(user);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

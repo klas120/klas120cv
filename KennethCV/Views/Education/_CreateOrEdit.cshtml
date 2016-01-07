@@ -1,0 +1,47 @@
+@model KennethCV.Models.Education
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TrainingCenter)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TrainingCenter)
+    @Html.ValidationMessageFor(model => model.TrainingCenter)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.CertificateName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.CertificateName)
+    @Html.ValidationMessageFor(model => model.CertificateName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.GradeLevel)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.GradeLevel)
+    @Html.ValidationMessageFor(model => model.GradeLevel)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.yearReceived)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.yearReceived)
+    @Html.ValidationMessageFor(model => model.yearReceived)
+</div>
+
+<div class="editor-label">
+    User
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.UserId, ((IEnumerable<KennethCV.Models.User>)ViewBag.PossibleUser).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option.NameUser).ToString(), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.UserId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.UserId)
+</div>

@@ -1,0 +1,32 @@
+@model KennethCV.Models.User
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    
+    <fieldset>
+
+        
+        <legend>User Data</legend>        
+
+		@Html.Partial("_CreateOrEdit", Model)       
+
+        <p>
+          <button type="submit" class="btn btn-primary">Create</button>          
+        </p>
+        
+    
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

@@ -1,0 +1,263 @@
+﻿@*@model IEnumerable<KennethCV.Models.User>*@
+@model KennethCV.Models.LoginModel
+@{
+    ViewBag.Title = "Página principal";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">                
+                <h3>@foreach(var item in ViewBag.users){ @item.NameUser   @item.SurnameUser}</h3>
+            </hgroup>                                 
+        </div>
+    </section>
+}
+
+<h3>CURRÍCULO</h3>
+<br />
+
+
+<div class="container">  
+
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#personal">Personal</a></li>
+    <li><a data-toggle="pill" href="#education">Education</a></li>
+    <li><a data-toggle="pill" href="#experience">Experience</a></li>
+    <li><a data-toggle="pill" href="#reference">Reference</a></li>
+    <li><a data-toggle="pill" href="#contact">Contact</a></li>
+  </ul>
+  
+  <div class="tab-content">
+
+    @* ---- USER DATA --- *@      
+    <div id="personal" class="tab-pane fade in active">
+        <br />    
+        <div class="table-responsive">
+            @foreach (var item in ViewBag.users)
+            {
+                <blockquote>
+                    <p><strong>Name:</strong>  @item.NameUser @item.SurnameUser.</p>
+                    @*<p><strong>Age:</strong> @item.AgeUser</p>*@
+                    <p><strong>Document:</strong> @item.DocumentUser</p>
+                    <p><strong>Phone:</strong> @item.PhoneUser</p>
+                    <p><strong>Address:</strong> @item.AddressUser</p>
+                    <p><strong>Email:</strong> @item.EmailUser</p>
+
+                </blockquote>
+       }
+        </div>
+    </div>
+     @* --------------------------------------------------------------------------- *@
+
+    @* ---- EDUCATION --- *@
+    <div id="education" class="tab-pane fade">
+      <h4>MY EDUCATION</h4>
+      <div class="table-responsive">
+          <table class="table table-hover">          
+              <tr class="active">
+                  <th>Institute
+                  </th>
+                  <th>Certificate
+                  </th>
+                  <th>Grade Level
+                  </th>
+                  <th>Received
+                  </th>
+              </tr>
+
+              @foreach (var item in ViewBag.educations)
+              {
+                  <tr class="active">
+                      <td>
+                          @item.TrainingCenter
+                      </td>
+                      <td>
+                          @item.CertificateName
+                      </td>
+                      <td>
+                          @item.GradeLevel
+                      </td>
+                      <td>
+                          @item.yearReceived
+                      </td>
+                  </tr>
+              }
+
+          </table>
+      </div>
+    </div>
+     @* --------------------------------------------------------------------------- *@
+
+    @* ---- EXPERIENCE --- *@
+    <div id="experience" class="tab-pane fade">
+      <h4>MY EXPERIENCE</h4>      
+      <div class="table-responsive">
+          <table class="table table-hover">
+              <tr class="active">
+                  <th>Employment
+                  </th>
+                  <th>Years
+                  </th>
+                  <th>Workplace
+                  </th>
+                  <th>WorkDetail
+                  </th>
+              </tr>
+
+              @foreach (var item in ViewBag.experiences)
+              {
+                  <tr class="active">                      
+                      <td>
+                          @item.Employment
+                      </td>
+                      <td>
+                          @item.SinceUntil
+                      </td>
+                      <td>
+                          @item.Workplace
+                      </td>
+                      <td>
+                          @item.WorkDetail
+                      </td>
+                  </tr>
+              }
+          </table>
+      </div>
+    </div>
+    @* --------------------------------------------------------------------------- *@
+
+    @* ---- REFERENCE --- *@
+    <div id="reference" class="tab-pane fade">
+      <h4>MY REFERENCE</h4>
+      <div class="table-responsive">
+          <table class="table table-hover">
+              <tr class="active">
+                  <th>Name
+                  </th>
+                  <th>Surname
+                  </th>
+                  <th>Phone
+                  </th>
+                  <th>employment
+                  </th>
+                  <th>WorkPlace
+                  </th>
+                  <th>Email
+                  </th>
+                  <th>Comentaries
+                  </th>
+              </tr>
+
+              @foreach (var item in ViewBag.refferences)
+              {
+                  <tr class="active">
+                      <td>
+                          @item.NameRefefence
+                      </td>
+                      <td>
+                          @item.SurnameReference
+                      </td>
+                      <td>
+                          @item.PhoneReference
+                      </td>
+                      <td>
+                          @item.employmentReference
+                      </td>
+                      <td>
+                          @item.WorkPlaceReference
+                      </td>
+                      <td>
+                          @item.EmailReference
+                      </td>
+                      <td>
+                          @item.ComentReference
+                      </td>
+                  </tr>
+}
+
+          </table>
+      </div>
+    </div>
+    @* --------------------------------------------------------------------------- *@
+
+    @* ---- CONTACT --- *@
+     <div id="contact" class="tab-pane fade">
+      <h4>CONTACT US</h4>
+         <p>Send an email to contact me.</p>
+      
+         <div class="ui-grid-a" style="width: 1000px; margin: 40px">
+        <div class="ui-block-a">
+        <div class="ui-bar ui-bar-a" style="height: auto">
+
+            @using (Html.BeginForm("SendMail","Contact"))
+            {     @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend>Form Mail</legend>
+
+                    <div class="editor-label">
+                        <label>Company Name</label>
+                    </div>
+                    <div class="editor-field">
+                        <input required name="nombre" />
+                    </div>
+
+                    <div class="editor-label">
+                        <label>Company email</label>
+                    </div>
+                    <div class="editor-field">
+                        <input name="correoElectronico" required type="email"/>
+                    </div>
+
+                    <div class="editor-field">
+                        <input type="hidden" name="asunto" value="SOLICITUD DE TRABAJO" />
+                    </div>
+
+                    <div class="editor-label">
+                        <label>Your message</label>
+                    </div>
+                    <div class="editor-field">
+                        <textarea name="mensaje" required cols="20" rows="2"></textarea>
+                    </div>  
+                                      
+                    <br />
+                    <div class="form-group">
+                      <div class="col-lg-10 col-lg-offset-2">
+                          
+                          <button type="submit" class="btn btn-primary">Send email</button>
+                      </div>
+                  </div>
+                </fieldset>
+            }            
+
+        </div>
+    </div>
+</div>
+
+    </div>
+     @* --------------------------------------------------------------------------- *@
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+

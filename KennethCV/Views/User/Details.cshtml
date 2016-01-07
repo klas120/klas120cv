@@ -1,0 +1,47 @@
+@model KennethCV.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+
+<br />
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+
+    <ul class="list-group">
+       
+        <li class="list-group-item">
+            
+            User Name: @Model.NameUser @Model.SurnameUser 
+            <hr />
+            User Age: @Model.AgeUser
+            <hr />
+            User Document: @Model.DocumentUser
+            <hr />
+            User Phone: @Model.PhoneUser
+            <hr />
+            User Address: @Model.AddressUser
+            <hr />
+            User Email: @Model.EmailUser
+            <hr />
+            User Reference: @(Model.Refferences == null ? "None" : Model.Refferences.Count.ToString())
+             <hr />
+            User Education:@(Model.Educations == null ? "None" : Model.Educations.Count.ToString())
+             <hr />
+            User Experience:@(Model.Experiences == null ? "None" : Model.Experiences.Count.ToString())
+        </li>       
+    </ul>
+        
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

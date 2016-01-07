@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "SendMail";
+}
+
+<h2>Enviar Correo.</h2>
+
+<div class="ui-grid-a" style="width: 1000px; margin: 40px">
+    <div class="ui-block-a">
+        <div class="ui-bar ui-bar-a" style="height: auto">
+
+            @using (Html.BeginForm())
+            {        
+
+                <fieldset>
+                    <legend>Form Email</legend>
+
+                    <div class="editor-label">
+                        <label>Company</label>
+                    </div>
+                    <div class="editor-field">
+                        <input required name="nombre" />
+                    </div>
+
+                    <div class="editor-label">
+                        <label>Mail</label>
+                    </div>
+                    <div class="editor-field">
+                        <input name="correoElectronico" required type="email"/>
+                    </div>
+
+                    <div class="editor-field">
+                        <input type="hidden" name="asunto" value="SOLICITUD DE TRABAJO" />
+                    </div>
+
+                    <div class="editor-label">
+                        <label>Message</label>
+                    </div>
+                    <div class="editor-field">
+                        <textarea name="mensaje" required cols="20" rows="2"></textarea>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Send Mail</button>
+                </fieldset>
+            }
+
+            <div>
+                @Html.ActionLink("Back Index", "Index", "Home")
+            </div>
+
+        </div>
+    </div>
+</div>
