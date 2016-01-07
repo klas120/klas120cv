@@ -41,6 +41,7 @@ namespace KennethCV.Controllers
             datosCorreo.Subject = asunto;
             datosCorreo.Body = mensaje + "\n\n" + "Correo Electrónico: " + correoElectronico;
 
+            // HOST NAME.
             smtp.Host = "smtp.gmail.com";
             //smtp.Host = "smtp.live.com";
             smtp.Port = 587;
