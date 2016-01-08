@@ -9,13 +9,12 @@ using KennethCV.Models;
 
 namespace KennethCV.Controllers
 {
-    // Autorización para poder entrar a administrar USER
     [Authorize]
     public class UserController : Controller
     {
         private CVitaeDb _db = new CVitaeDb();
 
-        //
+        // My Index
         // GET: /User/
 
         public ViewResult Index()
