@@ -8,6 +8,7 @@ namespace KennethCV.Models
 {
     public class User
     {
+        
         [Required(ErrorMessage = "The ID is required.")]
         public int Id { get; set; }
 
