@@ -9,6 +9,7 @@ using KennethCV.Models;
 
 namespace KennethCV.Controllers
 {
+    // Autorización para poder entrar a administrar USER
     [Authorize]
     public class UserController : Controller
     {
